@@ -19,6 +19,12 @@ public class Cart {
     @OneToOne
     private User user;
 
+    @ManyToMany
+    @JoinTable(
+            name = "cart_items",
+            joinColumns = @JoinColumn(name = "cart_id"),
+            inverseJoinColumns = @JoinColumn(name = "menu_item_id")
+    )
     private List<MenuItem> items;
 
     private Double amount;
