@@ -22,4 +22,6 @@ public class MenuItem {
     @JoinColumn
     @ManyToOne
     private Long restaurantId;
+
+    private Restaurant restaurant;
 }

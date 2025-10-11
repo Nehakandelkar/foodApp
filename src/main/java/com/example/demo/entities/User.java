@@ -22,7 +22,7 @@ public class User {
 
     @Email
     @Column(unique = true)
-    private String email;
+    protected String email;
 
     @Size(min = 8)
     @NotBlank
