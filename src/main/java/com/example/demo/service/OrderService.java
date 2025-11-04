@@ -6,15 +6,21 @@ import com.example.demo.entities.User;
 import com.example.demo.repositories.CartRepository;
 import com.example.demo.repositories.OrderRepository;
 import com.example.demo.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderService {
 
+    @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
     private UserRepository userRepository;
 
     public Order placeOrder(Long userId) {

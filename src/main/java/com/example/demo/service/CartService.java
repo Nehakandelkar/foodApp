@@ -4,13 +4,18 @@ import com.example.demo.entities.Cart;
 import com.example.demo.entities.MenuItem;
 import com.example.demo.repositories.CartRepository;
 import com.example.demo.repositories.MenuItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.awt.*;
 
+@Service
 public class CartService {
 
+    @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
     private MenuItemRepository menuItemRepository;
 
     public Cart getCartByUserId(Long userId) {
