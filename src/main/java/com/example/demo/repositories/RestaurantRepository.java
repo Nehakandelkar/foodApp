@@ -11,10 +11,6 @@ import java.util.Optional;
 public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 
     Optional<Restaurant> findByName(String name);
-    List<Restaurant> findByCity(String city);
-    List<Restaurant> findByCuisineType(String cuisineType);
-    List<Restaurant> findByIsOpenTrue(); // Find all currently open restaurants
-    List<Restaurant> findByRatingGreaterThanEqual(Double rating); // Filter by rating
 
     boolean existsByName(String name);
 

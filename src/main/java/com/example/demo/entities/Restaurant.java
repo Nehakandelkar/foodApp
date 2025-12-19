@@ -30,5 +30,6 @@ public class Restaurant {
 
     private int rating;
 
+    @OneToMany
     private List<MenuItem> menuItems;
 }

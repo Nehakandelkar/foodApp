@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.MenuItemRequestDTO;
-import com.example.demo.dto.MenuItemResponseDTO;
+import com.example.demo.dto.MenuItemDTO;
 import com.example.demo.service.MenuItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,23 +15,19 @@ public class MenuItemController {
 
     private final MenuItemService menuItemService;
 
+    @GetMapping("/restaurant/{restaurantId}")
+    public ResponseEntity<List<MenuItemDTO>> getItemsByRestaurant(@PathVariable Long restaurantId) {
+        List<MenuItemDTO> items = menuItemService.getItemsByRestaurant(restaurantId);
+        return ResponseEntity.ok(items);
+    }
+
     @PostMapping
-    public ResponseEntity<MenuItemResponseDTO> addMenuItem(@RequestBody MenuItemRequestDTO dto) {
+    public ResponseEntity<MenuItemDTO> addMenuItem(@RequestBody MenuItemDTO dto) {
         return ResponseEntity.ok(menuItemService.addMenuItem(dto));
     }
 
-    @GetMapping
-    public ResponseEntity<List<MenuItemResponseDTO>> getAllMenuItems() {
-        return ResponseEntity.ok(menuItemService.getAllMenuItems());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<MenuItemResponseDTO> getMenuItemById(@PathVariable Long id) {
-        return ResponseEntity.ok(menuItemService.getMenuItemById(id));
-    }
-
     @PutMapping("/{id}")
-    public ResponseEntity<MenuItemResponseDTO> updateMenuItem(@PathVariable Long id, @RequestBody MenuItemRequestDTO dto) {
+    public ResponseEntity<MenuItemDTO> updateMenuItem(@PathVariable Long id, @RequestBody MenuItemDTO dto) {
         return ResponseEntity.ok(menuItemService.updateMenuItem(id, dto));
     }
 

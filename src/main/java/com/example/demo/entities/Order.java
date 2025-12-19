@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -21,6 +21,7 @@ public class Order {
     @ManyToOne //many orders one restaurant
     private Restaurant restaurant;
 
+    @OneToMany
     private List<MenuItem> items;
 
     private Double totalAmount;

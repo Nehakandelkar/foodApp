@@ -19,9 +19,7 @@ public class MenuItem {
 
     private double price;
 
-    @JoinColumn
     @ManyToOne
-    private Long restaurantId;
-
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 }

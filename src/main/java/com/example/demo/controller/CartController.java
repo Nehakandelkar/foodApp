@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entities.Cart;
+import com.example.demo.dto.CartDTO;
 import com.example.demo.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +14,12 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<Cart> getCartByUser(@PathVariable Long userId) {
+    public ResponseEntity<CartDTO> getCartByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(cartService.getCartByUserId(userId));
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Cart> addItemToCart(
+    public ResponseEntity<CartDTO> addItemToCart(
             @RequestParam Long userId,
             @RequestParam Long menuItemId,
             @RequestParam(defaultValue = "1") int quantity
@@ -28,7 +28,7 @@ public class CartController {
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<Cart> removeItemFromCart(
+    public ResponseEntity<CartDTO> removeItemFromCart(
             @RequestParam Long userId,
             @RequestParam Long menuItemId
     ) {
